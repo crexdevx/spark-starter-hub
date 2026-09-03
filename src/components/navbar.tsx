@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 
-import logo from "../assets/logo.webp";
+import logoAsset from "../assets/logo.webp.asset.json";
+
+const logo = logoAsset.url;
 
 const navLinks = [
   { name: "Home", hash: "top" },
