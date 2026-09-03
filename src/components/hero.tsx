@@ -1,4 +1,6 @@
-import posterUrl from "../assets/sky-lifting-hero-poster.jpg";
+import heroPoster from "../assets/sky-lifting-hero-poster.webp.asset.json";
+
+const posterUrl = heroPoster.url;
 
 /**
  * Homepage hero for Sky Lifting Club.

@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, MessageCircle, Phone } from "lucide-react";
 
-import logo from "../assets/logo.webp";
+import logoAsset from "../assets/logo.webp.asset.json";
+
+const logo = logoAsset.url;
 
 const quickLinks = [
   { name: "Home", hash: "top" },
@@ -24,14 +26,14 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-black text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
-          <a href="#top" className="flex items-center gap-3">
+          <Link to="/" hash="top" className="flex items-center gap-3">
             <img
               src={logo}
               alt="Sky Lifting Club logo"
               className="h-12 w-12 rounded-full border border-white/20 object-cover"
             />
             <span className="font-display text-2xl tracking-wide">SKY LIFTING CLUB</span>
-          </a>
+          </Link>
           <p className="mt-4 max-w-xs text-sm text-white/60">
             A weightlifting community built on honor, discipline, and respect. Train harder, lift
             heavier, rise together.
@@ -45,12 +47,13 @@ export function Footer() {
           <ul className="mt-4 grid grid-cols-2 gap-2">
             {quickLinks.map((link) => (
               <li key={link.name}>
-                <a
-                  href={`#${link.hash}`}
+                <Link
+                  to="/"
+                  hash={link.hash}
                   className="text-sm text-white/60 transition-colors hover:text-white"
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

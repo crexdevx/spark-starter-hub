@@ -3,22 +3,6 @@ import { Link } from "@tanstack/react-router";
 
 import { SHOTS, type Shot } from "../data/gallery";
 
-/**
- * Per-photo placement for the grouped "pile" collage. A small rotation and
- * offset makes the shots read as a scattered stack of polaroids rather than a
- * flat grid.
- */
-const PLACEMENT: { rotate: string }[] = [
-  { rotate: "-6deg" },
-  { rotate: "4deg" },
-  { rotate: "-3deg" },
-  { rotate: "5deg" },
-  { rotate: "-5deg" },
-  { rotate: "3deg" },
-  { rotate: "-4deg" },
-  { rotate: "6deg" },
-];
-
 type GalleryProps = {
   /** How many photos to show. Omit to show every shot. */
   limit?: number;
@@ -96,32 +80,28 @@ export function Gallery({
           </p>
         </header>
 
-        {/* Grouped collage: a scattered pile of polaroid-style tiles */}
-        <div className="mt-12 flex flex-wrap justify-center gap-3 sm:gap-5">
-          {shots.map((shot, index) => {
-            const place = PLACEMENT[index % PLACEMENT.length] ?? PLACEMENT[0]!;
-            return (
-              <button
-                key={shot.url}
-                type="button"
-                onClick={() => setOpenIndex(index)}
-                style={{ transform: `rotate(${place.rotate})` }}
-                className="group relative block w-[calc(50%-0.75rem)] shrink-0 overflow-hidden rounded-xl border-4 border-on-pure bg-on-pure p-1 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:z-10 hover:scale-105 hover:rotate-0 focus:outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-gold sm:w-56 sm:p-2"
-                aria-label={`View photo: ${shot.alt}`}
-              >
-                <img
-                  src={shot.url}
-                  alt={shot.alt}
-                  loading="lazy"
-                  className="aspect-square w-full rounded-md object-cover"
-                />
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-1 rounded-md bg-gradient-to-t from-surface-pure/70 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-20"
-                />
-              </button>
-            );
-          })}
+        {/* Plain photo grid */}
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+          {shots.map((shot, index) => (
+            <button
+              key={shot.url}
+              type="button"
+              onClick={() => setOpenIndex(index)}
+              className="group relative block overflow-hidden rounded-xl transition-transform duration-300 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              aria-label={`View photo: ${shot.alt}`}
+            >
+              <img
+                src={shot.url}
+                alt={shot.alt}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface-pure/70 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-20"
+              />
+            </button>
+          ))}
         </div>
 
         {showViewMore && SHOTS.length > shots.length ? (
