@@ -46,7 +46,7 @@ export function Footer() {
             {quickLinks.map((link) => (
               <li key={link.name}>
                 <a
-                  href={link.href}
+                  href={`#${link.hash}`}
                   className="text-sm text-white/60 transition-colors hover:text-white"
                 >
                   {link.name}
