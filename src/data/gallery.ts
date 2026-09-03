@@ -10,12 +10,12 @@ import g10 from "../assets/gallery-10.webp";
 export type Shot = { url: string; alt: string };
 
 export const SHOTS: Shot[] = [
-  { url: g9.url, alt: "Bench press racks under magenta neon lighting" },
-  { url: g10.url, alt: "Row of adjustable benches beside dumbbell racks" },
-  { url: g5.url, alt: "Member flexing in front of the mirror wall" },
-  { url: g8.url, alt: "Treadmills lined along the floor-to-ceiling windows" },
-  { url: g2.url, alt: "Plate-loaded machines in the strength zone" },
-  { url: g1.url, alt: "Barbell and dumbbell racks in the free weights area" },
-  { url: g3.url, alt: "Members training together on the gym floor" },
-  { url: g4.url, alt: "Overhead shot of a member on the training floor" },
+  { url: g9, alt: "Bench press racks under magenta neon lighting" },
+  { url: g10, alt: "Row of adjustable benches beside dumbbell racks" },
+  { url: g5, alt: "Member flexing in front of the mirror wall" },
+  { url: g8, alt: "Treadmills lined along the floor-to-ceiling windows" },
+  { url: g2, alt: "Plate-loaded machines in the strength zone" },
+  { url: g1, alt: "Barbell and dumbbell racks in the free weights area" },
+  { url: g3, alt: "Members training together on the gym floor" },
+  { url: g4, alt: "Overhead shot of a member on the training floor" },
 ];
